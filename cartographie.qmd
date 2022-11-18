@@ -34,7 +34,7 @@ ojs_define(fond_dep = sf_geojson(donnees_dep))
 
 # Compter pour du beurre
 
-*Le site www.didier-beurre.fr présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu'ils sont français, où ont été fabriqués ces beurres ?*
+*Le site [www.didier-beurre.fr](www.didier-beurre.fr) présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu'ils sont français, où ont été fabriqués ces beurres ?*
 
 ```{ojs}
 //| panel: input
@@ -64,11 +64,11 @@ bertin = require("bertin@1.2.4")
 ```
 
 ```{ojs}
-cercle_max = if(categorie == "doux"){
+cercle_max = {if(categorie == "doux"){
     return 40
   }else{
     return 27.59
-  }
+  }}
 ```
 
 ```{ojs}

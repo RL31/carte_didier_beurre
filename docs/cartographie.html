@@ -214,7 +214,7 @@ x dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <section id="compter-pour-du-beurre" class="level1">
 <h1>Compter pour du beurre</h1>
-<p><em>Le site www.didier-beurre.fr présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu’ils sont français, où ont été fabriqués ces beurres ?</em></p>
+<p><em>Le site <a href="www.didier-beurre.fr">www.didier-beurre.fr</a> présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu’ils sont français, où ont été fabriqués ces beurres ?</em></p>
 <div class="cell panel-input card bg-light p-2">
 <div class="sourceCode cell-code hidden" id="cb21" data-startfrom="40" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 39;"><span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>viewof categorie <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"... doux, un point c'est tout !"</span><span class="op">,</span> <span class="st">"doux"</span>]<span class="op">,</span></span>
 <span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>[<span class="st">"... salé, y'a qu'ça de vrai !"</span><span class="op">,</span> <span class="st">"sale"</span>]])<span class="op">,</span></span>
@@ -256,27 +256,15 @@ x dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 </div>
 </div>
-<div class="quarto-ojs-syntax-error">
-<div class="sourceCode" id="cb24" data-startfrom="66" data-syntax-error-position="13" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 65;"><span id="cb24-66"><a href="#cb24-66"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
-<span id="cb24-67"><a href="#cb24-67"></a>cercle_max <span class="op">=</span> <span class="cf">if</span><span class="op">(</span>categorie <span class="op">==</span> <span class="st">"doux"</span><span class="op">){</span></span>
-<span id="cb24-68"><a href="#cb24-68"></a>    <span class="cf">return</span> <span class="dv">40</span></span>
-<span id="cb24-69"><a href="#cb24-69"></a>  <span class="op">}</span><span class="cf">else</span><span class="op">{</span></span>
-<span id="cb24-70"><a href="#cb24-70"></a>    <span class="cf">return</span> <span class="fl">27.59</span></span>
-<span id="cb24-71"><a href="#cb24-71"></a>  <span class="op">}</span></span>
-<span id="cb24-72"><a href="#cb24-72"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-OJS Syntax Error (line 67, column 14)Unexpected token
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb24" data-startfrom="66" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 65;"><span id="cb24-66"><a href="#cb24-66" aria-hidden="true" tabindex="-1"></a>cercle_max <span class="op">=</span> {<span class="cf">if</span>(categorie <span class="op">==</span> <span class="st">"doux"</span>){</span>
+<span id="cb24-67"><a href="#cb24-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">40</span></span>
+<span id="cb24-68"><a href="#cb24-68" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb24-69"><a href="#cb24-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">27.59</span></span>
+<span id="cb24-70"><a href="#cb24-70" aria-hidden="true" tabindex="-1"></a>  }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
 
-</div>
 </div>
 </div>
 </div>
@@ -320,7 +308,7 @@ OJS Syntax Error (line 67, column 14)Unexpected token
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\nviewof categorie = Inputs.radio(new Map([[\"... doux, un point c'est tout !\", \"doux\"],\n[\"... salé, y'a qu'ça de vrai !\", \"sale\"]]),\n{value: \"doux\",\nlabel: \"Du beurre\"})\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\nfond_filtre = bertin.properties.subset({\n                geojson: fond,\n                field: \"doux_sel\",\n                selection: categorie\n                })\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\nfond = JSON.parse(fond_dep)\nbertin = require(\"bertin@1.2.4\")\n\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"bertin.draw({\nparams: { projection: \"+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs\"},\nlayers: [\n{ type: \"bubble\",\ngeojson: fond_filtre,\nvalues: \"n\",\nk: cercle_max,\ndorling: false,\nfill: \"darkseagreen\",\ntooltip: [\"$NOM\", \"$n\", \"emballages\"],\nleg_round: 0,\nleg_x: 800,\nleg_y: 400,\nleg_round: -1,\nleg_title: \"Nombre d'emballages\"\n},\n{\ntype: \"layer\",\ngeojson: fond,\nfill: \"wheat\"/*,\nfillOpacity: 0.3*/\n},\n{ type: \"graticule\" }\n]\n})\n\n"},{"methodName":"interpretQuiet","source":"shinyInput('categorie')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\nviewof categorie = Inputs.radio(new Map([[\"... doux, un point c'est tout !\", \"doux\"],\n[\"... salé, y'a qu'ça de vrai !\", \"sale\"]]),\n{value: \"doux\",\nlabel: \"Du beurre\"})\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\nfond_filtre = bertin.properties.subset({\n                geojson: fond,\n                field: \"doux_sel\",\n                selection: categorie\n                })\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\nfond = JSON.parse(fond_dep)\nbertin = require(\"bertin@1.2.4\")\n\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"cercle_max = {if(categorie == \"doux\"){\n    return 40\n  }else{\n    return 27.59\n  }}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"bertin.draw({\nparams: { projection: \"+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs\"},\nlayers: [\n{ type: \"bubble\",\ngeojson: fond_filtre,\nvalues: \"n\",\nk: cercle_max,\ndorling: false,\nfill: \"darkseagreen\",\ntooltip: [\"$NOM\", \"$n\", \"emballages\"],\nleg_round: 0,\nleg_x: 800,\nleg_y: 400,\nleg_round: -1,\nleg_title: \"Nombre d'emballages\"\n},\n{\ntype: \"layer\",\ngeojson: fond,\nfill: \"wheat\"/*,\nfillOpacity: 0.3*/\n},\n{ type: \"graticule\" }\n]\n})\n\n"},{"methodName":"interpretQuiet","source":"shinyInput('categorie')"}]}
 </script>
 <script type="module">
 window._ojs.paths.runtimeToDoc = "../..";
@@ -514,7 +502,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># Compter pour du beurre</span></span>
 <span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>*Le site www.didier-beurre.fr présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu'ils sont français, où ont été fabriqués ces beurres ?*</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>*Le site [www.didier-beurre.fr](www.didier-beurre.fr) présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu'ils sont français, où ont été fabriqués ces beurres ?*</span>
 <span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
 <span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="co">//| panel: input</span></span>
@@ -542,11 +530,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a>cercle_max <span class="op">=</span> <span class="cf">if</span>(categorie <span class="op">==</span> <span class="st">"doux"</span>){</span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a>cercle_max <span class="op">=</span> {<span class="cf">if</span>(categorie <span class="op">==</span> <span class="st">"doux"</span>){</span>
 <span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">40</span></span>
 <span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
 <span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">27.59</span></span>
-<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a>  }}</span>
 <span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
 <span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
