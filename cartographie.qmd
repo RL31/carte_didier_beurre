@@ -1,0 +1,103 @@
+---
+format:
+  html:
+    toc: false
+    echo: false
+    keep-hidden: true
+    code-tools: true
+---
+
+```{r}
+#| output: false
+#| message: false
+#| warning: false
+
+# library(magick)
+library(tidyverse)
+# library(rvest)
+library(sf)
+library(tidygeocoder)
+library(geojsonsf)
+
+dpts_simplifies <- readRDS("donnees/DEPARTEMENT_SIMPLIFIE.RDS") %>% 
+  st_transform(4326)
+
+donnees_dep <- dpts_simplifies %>% 
+  left_join(readRDS("donnees/base_geocodee.RDS") %>% 
+              mutate(doux_sel=if_else(doux_sel=="salé","sale","doux")) %>% 
+              # filter(doux_sel %in% c("doux","salé")) %>% 
+              count(doux_sel,dep) %>% view(),
+            by=c("INSEE_DEP"="dep"))
+
+ojs_define(fond_dep = sf_geojson(donnees_dep))
+```
+
+# Compter pour du beurre
+
+*Le site www.didier-beurre.fr présente une collection de plus de 4000 emballages de beurre. Mais, lorsqu'ils sont français, où ont été fabriqués ces beurres ?*
+
+```{ojs}
+//| panel: input
+
+viewof categorie = Inputs.radio(new Map([["... doux, un point c'est tout !", "doux"],
+["... salé, y'a qu'ça de vrai !", "sale"]]),
+{value: "doux",
+label: "Du beurre"})
+
+```
+
+```{ojs}
+
+fond_filtre = bertin.properties.subset({
+                geojson: fond,
+                field: "doux_sel",
+                selection: categorie
+                })
+
+```
+
+```{ojs}
+
+fond = JSON.parse(fond_dep)
+bertin = require("bertin@1.2.4")
+
+```
+
+```{ojs}
+cercle_max = if(categorie == "doux"){
+    return 40
+  }else{
+    return 27.59
+  }
+```
+
+```{ojs}
+bertin.draw({
+params: { projection: "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"},
+layers: [
+{ type: "bubble",
+geojson: fond_filtre,
+values: "n",
+k: cercle_max,
+dorling: false,
+fill: "darkseagreen",
+tooltip: ["$NOM", "$n", "emballages"],
+leg_round: 0,
+leg_x: 800,
+leg_y: 400,
+leg_round: -1,
+leg_title: "Nombre d'emballages"
+},
+{
+type: "layer",
+geojson: fond,
+fill: "wheat"/*,
+fillOpacity: 0.3*/
+},
+{ type: "graticule" }
+]
+})
+
+
+
+```
